@@ -1,0 +1,490 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Motivación}{Motivación}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Seguiría siendo bueno hablar de android
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Soluciónes existentes
+\end_layout
+
+\begin_layout Standard
+A continuación se describen algunos dispositivos y aplicaciones que actualmente
+ se encuentran en el mercado y cuentan con características similares a nuestro
+ proyecto.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Hardware
+\end_layout
+
+\begin_layout Standard
+GP2X es una videoconsola portátil creada en 2005 por la empresa surcoreana
+ a Gamepark Holdings.
+ En Octubre de 2007 salió al mercado un nuevo modelo de esta consola: GP2X
+ o F-200.
+ Cuenta con pantalla táctil QVGA y se ha reemplazado el stick por un a
+ D-Pad de 8 direcciones.
+ El consumo de batería ha sido optimizado e incluye soporte para tarjetas
+ de memoria SDHC de hasta 32 GB.
+ Está disponible en a color blanco y es retrocompatible con la anterior
+ GP2X F-100 y su revisión (GP2X F-100 MK2).
+ 
+\end_layout
+
+\begin_layout Standard
+Una de las características principales del GP2X es la posibilidad de emular
+ numerosos sistemas.
+ Para ello, se beneficia de un procesador principal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, para el que ya existen multitud de proyectos relacionados con la emulación
+ que se pueden reutilizar a la hora de programar un emulador.
+ 
+\end_layout
+
+\begin_layout Standard
+Existe una comunidad de desarrollo para la GP2X muy dinámica, y constantemente
+ se estan creando y portando juegos y programas para esta consola.
+ Entre los tipos de software disponible, encontramos emuladores de otras
+ máquinas, conversiones, programas propios y programas de reproducción
+ multimedia.
+ 
+\end_layout
+
+\begin_layout Standard
+GamePack de Liquidware, aunque no cuenta precisamente con un procesador
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ es un paquete para que cualquier usuario pueda armar su propia consola,
+ la cual ya viene con una aplicación compilada pero tiene también la posibilid
+ad de poder crear aplicaciones propias debido a que el sistema se encuentra
+ basado en el uso de Processing que está hecho en Java.
+ 
+\end_layout
+
+\begin_layout Standard
+El código que se ejecuta en las placas está basado en las biblioteca de
+ aplicación Wiring API y en las de desarrollo de los integrados AVR.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\backslash
+begin{tabular}{|c|c|c|} 
+\backslash
+hline 
+\backslash
+hline 
+\backslash
+scriptsize PRODUCTO & 
+\backslash
+scriptsize CARACTERÍSTICAS & 
+\backslash
+scriptsize PRECIO EN EL MERCADO 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+scriptsize GP2X & 
+\backslash
+scriptsize 
+\backslash
+ac{ARM}920T 200Mhz,& 
+\backslash
+scriptsize 200.00 USD 
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize pantalla táctil QVGA,& 
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize tarjetas de memoria SDHC  & 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+scriptsize GamePack de Liquidware & 
+\backslash
+scriptsize Integrados AVR,& 
+\backslash
+scriptsize 249.93 USD 
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize Processing hecho en java,& 
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize chip Atmega8, 
+\backslash
+scriptsize Pantalla LCD & 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+scriptsize TT & 
+\backslash
+scriptsize Procesador 
+\backslash
+ac{ARM}, 128MB de RAM,& 
+\backslash
+scriptsize Aprox.
+ entre 60USD y 80USD  
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize pantalla LCD, puerto USB,& 
+\backslash
+
+\backslash
+ & 
+\backslash
+scriptsize sistema operativo propio y libre.
+ & 
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+end{tabular} 
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Software 
+\end_layout
+
+\begin_layout Standard
+Existe gran cantidad de recursos en cuanto a software para la simulacion
+ de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ se refiere.
+ Se pueden clasificar de acuerdo a su nivel de simulació́n, ya o sea por
+ el nivel de arquitectura y el conjunto de instrucciones o por las tecnicas
+ usadas.
+\end_layout
+
+\begin_layout Subsubsection
+Ejemplos:
+\end_layout
+
+\begin_layout Subsubsection
+Dynarecs[ARMphetamine] 
+\end_layout
+
+\begin_layout Standard
+Un simulador normalmente interpreta el código binario del software compila-
+ do para una tarjeta especifica.
+ El metodo de recompilación dinámica [Dynarecs]
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Dynamic"
+
+\end_inset
+
+ involucra el traducir partes del codigo binario al lenguaje nativo de la
+ maquina en tiempo de ejecución.
+ La ejecución nativa del codigo recompilado permite una ejecucion mas rapida
+ del software simulado.
+ Una gran cantidad de simuladores están desarrollados utilizando esta técnica,
+ como ARMphetamine
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ARMphetamine"
+
+\end_inset
+
+ para el procesador procesador e 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Nivel Arquitectura[SWARM]
+\end_layout
+
+\begin_layout Standard
+SWARM
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SWARM"
+
+\end_inset
+
+ fue diseñado como un modulo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ del sistema operativo desarrollado por la universidad de Stanford llamado
+ SimOS
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SimOS"
+
+\end_inset
+
+.
+ SimOS permite la emulación de varias partes del procesador 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ usando un simple core.
+ SWARM no fue diseñado en un principio para ejecutar binarios de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ pero gracias a la investigacion y desarrollo de nuevas implementaciones
+ se ha logrado esto.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Nivel instrucción[SimARM] 
+\end_layout
+
+\begin_layout Standard
+SimARM es un simulador de un conjunto de instrucciones (ISS) que intepreta
+ los programas de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ en el nivel de instrucción evitando la necesidad de tener hardware 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+ Los ISS’s son faciles de implementar pero son mas lentos que los simuladores
+ basados en dynarecs dado que todas las instrucciones son estrictamente
+ interpretadas.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\end_layout
+
+\end_body
+\end_document

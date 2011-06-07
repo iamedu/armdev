@@ -1,0 +1,136 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Motivación}{Motivación}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Planteamiento del problema
+\end_layout
+
+\begin_layout Standard
+Existen varias herramientas de desarrollo para varias plataformas, sin embargo
+ aun así­ es difícil crear aplicaciónes con un propósito específico, y es
+ mas tardado aún crear una nueva propuesta para resolver un problema desde
+ cero.
+\end_layout
+
+\begin_layout Standard
+Existen varias dificultades, para empezar es complicado conseguir algunas
+ herramienta de los fabricantes por los altos costos del esquema de licenciamien
+to.
+\end_layout
+
+\begin_layout Standard
+Por otro lado, si disponemos de las herramientas, encontramos otros detalles,
+ por ejemplo, el tiempo que nos lleva probar una determinada aplicación,
+ o las limitaciónes a trabajar con lo que el fabricante ha definido sin
+ posibilidad de hacer modificaciónes.
+\end_layout
+
+\begin_layout Standard
+Así que podemos definir puntualmente los siguientes problemas:
+\end_layout
+
+\begin_layout Itemize
+Alto costo de las herramientas de desarrollo.
+\end_layout
+
+\begin_layout Itemize
+No permiten flexibilidad en el diseño de los dispositivos.
+\end_layout
+
+\begin_layout Itemize
+Tiempos elevados de programación y pruebas.
+\end_layout
+
+\begin_layout Itemize
+Herramientas difíciles de usar.
+\end_layout
+
+\end_body
+\end_document

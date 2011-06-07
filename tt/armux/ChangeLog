@@ -1,0 +1,7 @@
+2009-09-13 Eduardo Diaz <iamedu@gmail.com>
+
+	* shell.c (interactive shell): Create file with lua support, builds
+	against readline os else accepts instructions just 250 characters long
+	* lua/luarmux.c, lua/Makefile.am: Create lua libs to interface the
+	processor
+

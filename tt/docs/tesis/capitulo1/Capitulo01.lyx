@@ -1,0 +1,726 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Tecnolog
+\backslash
+'ia ARM}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:tecnologia_arm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Para alcanzar nuestros objetivos necesitamos encontrar un punto de arranque
+ y para ello buscamos entre la tecnología que se ofrece actualmente a la
+ comunidad.
+\end_layout
+
+\begin_layout Standard
+Para poder crear sistemas con capacidades específicas como video, audio
+ ó WiFi podemos utilizar varias estrategias, desde diseñar un sistema utilizando
+ transistores hasta programar una arquitectura existente en lenguajes como
+ .NET o Java.
+\end_layout
+
+\begin_layout Standard
+Cada una de estas opciónes tiene sus ventajas y desventajas.
+ Si trabajamos con tecnologías de alto nivel tenemos un tiempo de desarrollo
+ rápido y no se necesitan muchos conocimientos sobre la arquitectura, con
+ el costo de que no podemos hacer modificaciónes a la arquitectura, es decir
+ dependemos del fabricante para incluir nuevas funcionalidades en el sistema.
+ Si en cambio trabajamos con tecnologías de bajo nivel se necesita un mayor
+ grado de conocimientos, y los tiempos de desarrollo se elevan.
+\end_layout
+
+\begin_layout Standard
+En nuestro caso, tenemos interés en ser capaces de modificar la plataforma
+ de hardware para agregar nueva funcionalidad o incluso tener la capacidad
+ de hacer modificaciones a la arquitectura, teniendo al mismo tiempo cierta
+ facilidad para el desarrollo de aplicaciones.
+\end_layout
+
+\begin_layout Standard
+Por esto, necesitamos una base mínima, y decidímos que para ello podíamos
+ utilizar un microcontrolador, pues nos da la capacidad de hacer cómputo
+ de distintos tipos de una manera más adecuada.
+ 
+\end_layout
+
+\begin_layout Section
+Elección de la tecnolog
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'i
+\end_layout
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+Una vez tomada esta decisión, se debe de elegir una tecnología que cumpla
+ con nuestros requerimientos, los cuales deben de ser:
+\end_layout
+
+\begin_layout Itemize
+Accesible.
+\end_layout
+
+\begin_layout Itemize
+Fácil acceso a la documentación.
+\end_layout
+
+\begin_layout Itemize
+Flexible, que la arquitectura permita hacer aplicaciones variadas.
+\end_layout
+
+\begin_layout Itemize
+Confiable.
+\end_layout
+
+\begin_layout Standard
+Teniendo estos parámetros en cuenta se definieron una serie de tecnologías
+ que pudieran cumplir nuestros requerimientos, las tecnologías seleccionadas
+ para la revisión fueron las siguientes:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Blackfin
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{MIPS}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{PIC}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada una de estas opciónes tiene sus ventajas y desventajas, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{MIPS}
+\end_layout
+
+\end_inset
+
+ son estándares que permiten que los fabricantes que lo deseen implementen
+ sus circuitos integrados y haya cierto grado de interoperabilidad entre
+ ellos.
+ Blackfin es interesante, pues se trata de un esfuerzo de 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Open Hardware
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph default
+con lo que es posible implementar mejores desde el nivel más bajo.
+ La tecnología 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{PIC}
+\end_layout
+
+\end_inset
+
+, de Microchip es una de las más difundidas y más sencillas de usar, sin
+ embargo no se ha contemplado para controlar un dispositivo de propósito
+ general, como un dispositivo móvil o incluso un dispositivo para videojuegos.
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Blackfin
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MIPS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PIC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARQ.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MMU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RISC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Libre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RISC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Flexible
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RISC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Accesible
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RISC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:comp-tec-table"
+
+\end_inset
+
+Comparación de tecnologías
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como podemos ver en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:comp-tec-table"
+
+\end_inset
+
+, las tecnologías ARM y MIPS son las que más se acercan a nuestros requerimiento
+s, aunque no cuentan con la ventaja de ser libres, sin embargo tienen algunas
+ características importantes.
+ Al ser estándares, los fabricantes pueden crear sus microcontroladores
+ con diferentes capacidades para usos muy variados.
+ 
+\end_layout
+
+\begin_layout Standard
+Otra ventaja de ambas tecnologías es que soportan dispositivos con y sin
+ MMU, con lo que se puden utilizar sistemas operativos como Linux y Windows
+ CE en caso de ser necesario.
+\end_layout
+
+\begin_layout Standard
+En los últimos años la tecnología 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, como se puede ver en las siguientes imagenes, ha dominado gran parte del
+ mercado de los dispositivos y los pronóstivos indican que seguirá creciendo.
+ Casi todos los fabricantes lo utilizan para sus dispositivos móvile incluso
+ con ejemplos como el iPhone o el Google Android.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../introduccion/tablaarm1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Uso de tecnología ARM hasta el 2000
+\size scriptsize
+
+\begin_inset Newline newline
+\end_inset
+
+http://www.designreuse.com/news img/20090430 microprocessormarketforecast.gif
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../introduccion/tablaarm2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size scriptsize
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Prediccion del uso de tecnología ARM hasta el 2013
+\begin_inset Newline newline
+\end_inset
+
+
+\size scriptsize
+http://www.designreuse.com/news img/20090430 microprocessormarketforecast.gif
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

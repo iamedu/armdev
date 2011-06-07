@@ -1,0 +1,9 @@
+SECTIONS
+{
+	. = 0X8000;
+	.text : { *(.text) }
+	. = 0X87f4;
+	.rodata : { *(.rodata) }
+	. = 0x107fc;
+	.data   : { *(.data) }
+}

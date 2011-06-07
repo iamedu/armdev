@@ -1,0 +1,74 @@
+\chapter{Introduccion}
+
+
+En la actualidad se utiliza una gran variedad de sistemas integrados en muchas partes, como routers, reproductores de audio, teléfonos celulares [4]. A pesar de que en México se fabrican muchos de estos dispositivos, la mayoria de las veces no son diseñados por ingenieros méxicanos. De igual forma los estudiantes gran parte de las veces no cuentan con el acceso a estas tecnologias para poder implementar nuevas aplicaciones o mejorar las ya existentes y en muchas ocaciones ni siquiera tienen conocimiento de la existencia de las mismas.\medskip
+
+Por estas razones, nos hemos planteado el objetivo de diseñar y desarrollar una plataforma de software y hardware libre que se encuentre al alcance de cualquier persona, principalmente los estudiantes de ingenier\'ia, con el fin de que empleando sus conocimientos y creatividad desarrollen aplicaciones capaces de correr sobre nuestro sistema o que puedan realizar mejoras sobre el diseño del hardware y de este modo México poco a poco se consolide como un pa\'is desarrollador de nuevas tecnologías poniendo el alto la calidad de nuestros ingenieros. \medskip
+
+{\bf Estado de arte}\medskip
+
+A continuación se describen algunos dispositivos y aplicaciones que actualmente se encuentran  en el mercado y cuentan con caracteristicas similares a nuestro proyecto.\medskip
+
+{\bf Hardware}\medskip
+
+GP2X es una videoconsola portátil creada en 2005 por la empresa surcoreana Gamepark Holdings.\medskip
+
+En Octubre de 2007 salió al mercado un nuevo modelo de esta consola: GP2X F-200. Cuenta con pantalla táctil QVGA y se ha reemplazado el stick por un D-Pad de 8 direcciones. El consumo de batería ha sido optimizado e incluye soporte para tarjetas de memoria SDHC de hasta 32 GB. Está disponible en color blanco y es retrocompatible con la anterior GP2X F-100 y su revisión (GP2X F-100 MK2).\medskip
+
+Una de las caracteristicas principales del GP2X es la posibilidad de emular numerosos sistemas. Para ello, se beneficia de un procesador principal ARM, para el que ya existen multitud de proyectos relacionados con la emulación que se pueden reutilizar a la hora de programar un emulador.\medskip
+
+Existe una comunidad de desarrollo para la GP2X muy dinámica, y constantemente se estan creando y portando juegos y programas para esta consola. Entre los tipos de software disponible, encontramos emuladores de otras máquinas, conversiones, programas propios y programas de reproducción multimedia.\medskip
+
+GamePack de Liquidware, aunque no cuenta precisamente con un procesador ARM es un paquete para que cualquier usuario pueda armar su propia consola, la cual ya viene con una aplicación compilada pero tiene también la posibilidad de poder crear   aplicaciones propias debido a que el sistema se encuentra basado en el uso de Processing que está hecho en Java.\medskip
+
+El código que se ejecuta en las placas está basado en las biblioteca de aplicación Wiring API y en las de desarrollo de los integrados AVR.\medskip
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\hline
+\scriptsize PRODUCTO & \scriptsize CARACTERÍSTICAS & \scriptsize PRECIO EN EL MERCADO \\
+\hline
+\scriptsize P2X & \scriptsize ARM920T 200Mhz,& \scriptsize 200.00 USD \\
+& \scriptsize pantalla táctil QVGA,& \\
+& \scriptsize tarjetas de memoria SDHC  & \\
+\hline
+\scriptsize GamePack de Liquidware & \scriptsize Integrados AVR,& \scriptsize 249.93 USD \\
+& \scriptsize Processing hecho en java,& \\
+& \scriptsize chip Atmega8, \scriptsize Pantalla LCD & \\
+\hline
+\scriptsize TT & \scriptsize Procesador ARM, 128MB de RAM,& \scriptsize Aprox. entre 60USD y 80USD  \\
+& \scriptsize pantalla LCD, puerto USB,& \\
+& \scriptsize sistema operativo propio y libre. & \\
+\hline
+\end{tabular}
+\end{center}\medskip
+
+{\bf Software}\medskip
+
+Existe gran cantidad de recursos en cuanto a software para la simulacion de ARM se refiere. Se pueden clasificar de acuerdo a su nivel de simulación, ya sea por el nivel de arquitectura y el conjunto de instrucciones o por las tecnicas usadas.\medskip
+
+Ejemplos\medskip
+
+{\bf Dynarecs[ARMphetamine]}\medskip
+
+Un simulador normalmente interpreta el codigo binario del software compilado para una tarjeta especifica. El metodo de recompilación dinamica [Dynarecs] \cite{Dynamic} involucra el traducir partes del codigo binario al lenguaje nativo de la maquina en tiempo de ejecución.\medskip
+
+La ejecución nativa del codigo recompilado permite una ejecucion mas rapida del software simulado. Una gran cantidad de simuladores están desarrollados utilizando esta técnica, como ARMphetamine \cite{ARMphetamine} para el procesador procesador ARM.\medskip
+
+{\bf Nivel Arquitectura[SWARM]}\medskip
+
+SWARM \cite{SWARM} fue diseñado como un modulo ARM del sistema operativo desarrollado por la universidad de Stanford llamado SimOS \cite{SimOS}. SimOS permite la emulación de varias partes del procesador ARM usando un simple core. SWARM no fue diseñado en un principio para ejecutar binarios de ARM pero gracias a la investigacion y desarrollo de nuevas implementaciones se ha logrado esto.\medskip
+
+{\bf Nivel instrucción[SimARM]}\medskip
+
+SimARM es un simulador de un conjunto de instrucciones [ISS] que intepreta los programas de ARM en el nivel de instruccion evitando la necesidad de tener hardware ARM. Los ISS's son faciles de implementar pero son mas lentos que los simuladores basados en dynarecs dado que todas las instrucciones son estrictamente interpretadas.\medskip
+
+{\bf Nuestra propuesta[ARMUX]}\medskip
+
+Una gran inovación de ARMUX es que se cuenta con la posibilidad de simular diversos dispositivos tales como el FTDI, JTAG, memoria NAND, etc.\medskip 
+
+La idea de desarrollar un nuevo simulador siendo que ya existen varios en el mercado, es debido a que estos simuladores en su mayoria solo ofrencen entradas y salidas estandar a diferencia de que nuestra idea es crear algo que sea compatible con una gran cantidad de dispositivos de entrada/salida lo que daria la opcion a que futuras generaciones usen o desarrollen nuevas implementaciones de nuestro trabajo.
+
+
+

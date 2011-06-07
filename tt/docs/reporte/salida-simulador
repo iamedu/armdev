@@ -1,0 +1,38 @@
+armux simulator version 0.1
+armux>> proc:writeReg(15,0x8000)
+armux>> proc:resume()
+armux>> i = 0
+armux>> while i < 100000 do print(proc:readReg(15)) i = i + 1 end
+32940
+32940
+...
+32940
+32960
+32960
+...
+32960
+32924
+32924
+...
+32924
+32936
+32936
+...
+32936
+32964
+32964
+...
+32964
+32952
+32952
+...
+32952
+32932
+32932
+...
+32932
+32952
+32952
+...
+armux>> proc:pause()
+armux>> exit

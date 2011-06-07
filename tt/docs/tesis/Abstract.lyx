@@ -1,0 +1,198 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Abstract}{Abstract}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+clearpage
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+cleardoublepage
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+cleardoublepage
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Resúmen
+\end_layout
+
+\begin_layout Standard
+El uso de dispositivos personales se ha vuelto necesario y con ello han
+ surgido varias tecnologías que prometen cumplir con ésta necesidad, la
+ desventaja de muchas de estas tecnologías es que no permiten hacer modificación
+es y nuevas propuestas libremente.
+ Esta desventaja es la que tratamos de sortear proponiendo un ambiente de
+ trabajo para desarrollar dispositivos de distintas capacidades, con una
+ arquitectura flexible y sencillo de usar.
+\end_layout
+
+\begin_layout Standard
+En este trabajo de investigación se analizan las soluciónes posibles, destacando
+ la arquitectura ARM como una de las más flexibles para hacer este tipo
+ de desarrollos.
+ Se analizan las herramientas de desarrollo existentes y con base en ello
+ se propone la creación de una nueva herramienta, un simulador llamado ARMUX,
+ pensado para dar flexibilidad y rapidez al proceso de desarrollo.
+ Para hacer más sencillo el desarrollo se propone una capa de abstracción:
+ el microkernel L4.
+\end_layout
+
+\begin_layout Standard
+Para terminar el ambiente de desarrollo completo se muestra el diseño de
+ una tarjeta que permite ejecutar los mismos programas probados en el simulador
+ ARMUX, y que controla también un dispositivo de video, con lo que podemos
+ probar de una manera muy sencilla una aplicación específica creada sobre
+ nuestro ambiente de desarrollo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endgroup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

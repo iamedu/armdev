@@ -1,0 +1,10 @@
+# ChangeLog for app-emulation/armux
+# Copyright 2009 ARMDev Developers
+# $Header: $
+
+
+* armux-0.1 (18 Sep 2009)
+
+    18 Sep 2009; Eduardo Diaz <iamedu@gmail.com> armux-0.1.ebuild:
+    Initial import
+

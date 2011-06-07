@@ -1,0 +1,28 @@
+\section{Microkernel}
+
+\section{Sistema operativo}
+
+Otra parte importante de un sistema m\'inimo es un sistema operativo, hay ciertas funciones de la biblioteca est\'andar que hacen uso de \'el. 
+
+Se desea tener por lo menos la posibilidad de ejecutar varios procesos a mismo tiempo, y tener un manejo de memoria.
+
+En este caso no somos muy ambiciosos, por lo que proponemos portar un sistema operativo existente, como puede ser el caso de L4 \'o Linux. 
+
+La elecci\'on del sistema operativo estar\'a en funci\'on de la integraci\'on con nuestro nuestra biblioteca est\'andar, y de los problemas que pudieramos llegar a encontrar en el transcurso del desarrollo del proyecto, se han pensado en las siguientes alternativas.
+
+
+\begin{itemize}
+
+\item \textbf{Portar L4/Fiasco} L4 es un microkernel de segunda generacion, desarrollado por John Liedtke y su equipo, este microkernel busca solucionar muchos de los microkernels que exist\'ian hasta ese momento \cite{Liedtke1996}. Alugnos de los puntos principales sobre los que trabaja son los cambios de contexto y las interrupciones debido a que es aqu\'i donde est\'a el overhead de los microkernels. 
+Una de las principales ventajas de este microkernel es que ya ha habido esfuerzos por migrarlo a la arquitectura ARM, aunque se han dejado son un buen punto de partida.
+
+\item \textbf{Portar GNU/Linux} En el mercado existen ya varias implementaciones de Linux sobre la arquitectura ARM, el kernel de linux trae los paquetes b\'asicos para esta arquitectura. El trabajo faltanto corresponde a crear los modulos para nuestra tarjeta usando nuestra biblioteca est\'andar de C.
+
+En este caso el riesgo consiste en el tama\~no y complejidad del kernel de Linux, y la gran cantidad de paquetes que se tendr\'ian que portar.
+
+\item \textbf{Escribir sistema a la medida} En el \'ultimo de los casos el trabajo consistir\'ia en implementar un sistema s\'olo con las caracter\'isticas b\'asicas necesarias, la ventaja es que podr\'ia ser m\'as sencillo implementar un sistema conociendo las caracter\'isticas de nuestro hardware que migrar otro sistema, en cuyo caso ser\'ia necesario entender la arquitecture de \'este adem\'as de la arquitectura de hardware.
+
+\end{itemize}
+
+Debido a la caracter\'istica de la arquitectura ARM, de que hay una gran cantidad de implementaci\'ones con diferentes capacidades decidimos que el microkernel es la mejor opci\'on puesto que permite tener diferentes servicios, dependiendo de la arquitectura.
+

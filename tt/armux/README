@@ -1,0 +1,39 @@
+Introduction
+============
+
+This is the armux simulator, it is in development with no release yet.
+
+The armux simulator allows to run plain ARM files, and to connect simulate extenal (and internal) devices. This should be accomplished by creating external processes if you want to, or you can also add a thread to armux, by modifying it.
+
+Compatibility
+=============
+
+We are currently working on simulation of the ARMv5 instruction set, Thumb and Jazelle instruction sets are not planned yet.
+
+armux can only be compiled in 32 bit mode, it has been tested on 64 bit systems liblua is provided as a binary to reduce compilation issues.
+
+Reporting Bugs
+==============
+
+Bug reports for armux should be sent to:
+
+	armdev-developers@googlegroups.com
+
+We will thank you for your bug reports, but don't expect a quick response, we are few developers and have a lot to do.
+
+Developers
+=============
+
+If you are taking this from the subversion repository you'll probably have to run autoreconf --install to create the configure scripts
+
+Installation
+=============
+
+Installation should be fairly easy, just enter armux dir and run:
+
+./configure
+
+If you have a working 32 bit python installation, and you'd rather use python instead of lua as the interactive shell you should run configure with the --with-python flag
+
+Once you have configured your build, just run make && make install
+

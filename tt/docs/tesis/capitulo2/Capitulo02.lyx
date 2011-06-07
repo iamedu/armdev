@@ -1,0 +1,522 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Herramientas para trabajar con ARM}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:herramientas_arm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior se discuten las razónes para seleccionar la arquitectura
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, en este capítulo discutiremos las herramientas con las que se cuentan
+ para trabajar con esta arquitectura y se plantea la falta de un simulador
+ dentro de éste conjunto de herramientas.
+\end_layout
+
+\begin_layout Section
+Herramientas existentes
+\end_layout
+
+\begin_layout Standard
+Para generar có́digo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ se necesita un ensamblador, y un compilador en caso de querer escribir
+ có́digo de nivel más alto.
+ 
+\end_layout
+
+\begin_layout Standard
+Se evaluaron varias herramientas que existen actualmente, como:
+\end_layout
+
+\begin_layout Itemize
+CrossWorks 
+\end_layout
+
+\begin_layout Itemize
+MDK-ARM
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GCC}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una de las herramientas má́s accesibles es la del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GCC}
+\end_layout
+
+\end_inset
+
+, es de licencia libre y es la herramienta que se usa por defecto en Linux.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GCC}
+\end_layout
+
+\end_inset
+
+nos provee de las herramientas bá́sicas que deseamos utilizar que son:
+\end_layout
+
+\begin_layout Itemize
+Ensamblador
+\end_layout
+
+\begin_layout Itemize
+Compilador de C
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+ensamblador
+\emph default
+ es el componente que se encarga de convertir el código ensamblador en có́digo
+ máquina, el ensamblador de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GCC}
+\end_layout
+
+\end_inset
+
+ lo hace utilizando el formato binario 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+, el cual especifica en qué direcció́n de memoria se localiza y donde debe
+ de estar cuando se inicie la ejecució́n.
+ El objetivo de este formato binario es el de generar binarios más pequeñ̃os
+ que indiquen al sistema operativo como se debe de crear el proceso en memoria
+ para su ejecución.
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+Compilador
+\emph default
+ ejecuta una serie de tareas que tienen como objetivo convertir el código
+ C en ensamblador para posteriormente utilizar al ensamblador para generar
+ el binario, por ello tambié́n generará́ programas 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Formato ELF
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+ es el formato común para archivos ejecutables, código objeto, librerías
+ compartidas y volcados de memoria.
+ Fue desarrollado por el UNIX System Laboratory (USL) y en 1999 fue elegido
+ como el formato estándar para archivos binarios en UNIX.
+\end_layout
+
+\begin_layout Standard
+El formato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+ tiene tres principales características por las cuales en la actualidad
+ se ha vuelto muy famoso entre diferentes sistemas operativos y plataformas:
+\end_layout
+
+\begin_layout Enumerate
+Flexible
+\end_layout
+
+\begin_layout Enumerate
+Extensible
+\end_layout
+
+\begin_layout Enumerate
+No esta ligado a un procesador o arquitectura en particular
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:estructuraELF.png"
+
+\end_inset
+
+ se muestra la estructura del formato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+, se compone de: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+Header: contiene información importante del archivo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Program header table: describe cero o mas segmentos
+\end_layout
+
+\begin_layout Itemize
+Section header table: describe cero o mas secciones
+\end_layout
+
+\begin_layout Itemize
+Referencia a los datos dependiendo del numero de entradas del Program header
+ table y del Section header table.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename estructuraELF.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Estructura del formato ELF
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:estructuraELF.png"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los segmentos contienen información importante para la ejecución del programa
+ mientras que las secciones contienen información importante para la vinculación
+ y reubicación.
+\end_layout
+
+\begin_layout Standard
+Si desea mas información acerca de los tipos de datos que maneja un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+, el contenido del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+ Header y el contenido del Section header table lo puede encontrar en el
+ apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elfstruct.h"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aún con estas herramientas hay algunos problemas en el desarrollo, sobre
+ todo por que las herramientas de software no modelan todas la gama de productos
+ que tiene la familia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, la solución que se plantea es el desarrollo de un simulador, con los mecanismo
+s necesarios para simular dispositivos externos.
+\end_layout
+
+\begin_layout Standard
+Ésto podría llevar al desarrollo de un generador automático de simuladores,
+ donde se especifiquen los dispositivos externos y se genere un simulador
+ específico para ese microprocesador.
+ Esto se discute con más detalle en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:resultados"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+texto pagina 11 (pedazo)
+\end_layout
+
+\begin_layout Plain Layout
+gcc tabla 
+\end_layout
+
+\begin_layout Plain Layout
+formato ELF
+\end_layout
+
+\begin_layout Plain Layout
+ELF porque el gcc lo usa por defecto
+\end_layout
+
+\begin_layout Plain Layout
+imagen de header
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,908 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Arquitectura de hardware}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:tarjeta"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Este trabajo, se separa en dos partes: software y hardware.
+ Para el hardware se realizará una tarjeta la cual hemos nombrado 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX.
+ La 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX presenta innovaciones respecto a la ya existentes en el mercado, sobre
+ todo tomando en cuenta que al hacer una tarjeta de este estilo, genera
+ un gran impacto en el desarrollo de la tecnología del país.
+\end_layout
+
+\begin_layout Standard
+Para la elaboración de esta tarjeta, primero pensamos que funciones queremos
+ que haga, por ejemplo: reproducción de video, almacenamiento de imágenes,
+ compilar código, etc.
+ Una vez teniendo claras las funciones se escoge los componentes que puedan
+ desarrollar mejor nuestros requerimientos.
+ Después de esta búsqueda se procede a desarrollar los diagramas pertinentes
+ donde se especifican las conexiones entre los dispositivos y la interacción
+ con el microcontrolador.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El nombre de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX se le fue dado por que el microcontrolador que usamos: el AT91SAM9260
+ y el prefijo de MX es, a simple vista notable, por el país en el que se
+ esta desarrollando, México.
+\end_layout
+
+\begin_layout Standard
+En orden y a manera de lista los pasos a seguir para la elaboración de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX son los siguientes:
+\end_layout
+
+\begin_layout Enumerate
+Especificación de las funciones de nuestra trajeta.
+\end_layout
+
+\begin_layout Enumerate
+Especificación de los dispositivos de nuestra tarjeta.
+\end_layout
+
+\begin_layout Enumerate
+Diagrama de bloques de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX 
+\end_layout
+
+\begin_layout Enumerate
+Diagrama esquemático de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Funciones
+\end_layout
+
+\begin_layout Standard
+Para cumplir con los objetivos de este proyecto es deseable que el diseño
+ de la tarjeta pueda ser utilizado para construir posteriormente dispositivos
+ móviles, que además de manejar video en dos dimensiones, pueda utilizar
+ una gran variedad de dispositivos externos tales como: 
+\end_layout
+
+\begin_layout Itemize
+Internet inalámbrico por medio de WiFi.
+\end_layout
+
+\begin_layout Itemize
+Video en una pantalla LCD.
+\end_layout
+
+\begin_layout Itemize
+Dispositivos de Entrada y Salida.
+\end_layout
+
+\begin_layout Standard
+Para ser usada como plataforma de desarrollo es necesario ser capaces de
+ subir código a la tarjeta de una manera sencilla los nuevos programas
+ y cambios que desarrollemos.
+ 
+\end_layout
+
+\begin_layout Standard
+Otro punto importante a tomar en cuenta es la salida de video, para ello
+ se deben de poder guardar imágenes en una memoria de alta capacidad y poderlas
+ trabajar en una memoria de mejor velocidad.
+ 
+\end_layout
+
+\begin_layout Standard
+Es por ello que se han definido las siguientes capacidades importantes de
+ la tarjeta:
+\end_layout
+
+\begin_layout Itemize
+Reguladores de Voltaje a 3.3 volts.
+\end_layout
+
+\begin_layout Itemize
+Interfaz USB para fácil acceso a la computadora.
+\end_layout
+
+\begin_layout Itemize
+Interfaz con dispositivos de almacenamiento externos.
+\end_layout
+
+\begin_layout Itemize
+Interfaz para depurar y programación có́digo.
+\end_layout
+
+\begin_layout Itemize
+Capacidad de conectar dispositivos de memoria externa.
+ 
+\end_layout
+
+\begin_layout Standard
+Los dispositivos que se han seleccionado para cumplir con esta especificación
+ se detallarán a continuación.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Dispositivos de SAM9-MX
+\end_layout
+
+\begin_layout Standard
+En las siguientes líneas se muestran las características más importantes
+ de los principales componentes de la tarjeta 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX.
+\end_layout
+
+\begin_layout Standard
+Una lista completa de los mismos se encuentra en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:componentes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Microcontrolador AT91SAM9260 
+\end_layout
+
+\begin_layout Standard
+El AT91SAM9260 es el primer miembro de la familia de microcontroladores
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+9, comparte el mismo modelo de programación que los controladores 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+7, permite la migración directa entre controladores basados en diferentes
+ cores de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+ Soporta operaciones deterministas y de tiempo real, ofrece funciones de
+ supervisación y tiene soporte de otras compañías comparada con los otros
+ controladores de 8-bits 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "at91"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+El AT91SAM9260 esta basado en el procesador ARM926EJ-S, cuenta con 8K byte
+ de instrucciones y 8K de cache de datos.
+ Opera a 210 MIPS con un reloj de 190MHZ.
+ Contiene 8K bytes de SRAM y 32K bytes de ROM, aunado con un bus externo
+ de interfaz con controladores de SDRAM y memorias estáticas incluyendo
+ la memoria NAND Flash y CompactFlash.
+ Dentro de los puertos periféricos se incluye USB Host y USB Device, puerto
+ Ethernet, interfaz de sensor de imágen, interfaz MCI, controlador serial
+ síncrono, USARTs, Interfaz SPI, 3 canales de 16 bits de Time Counter TC,
+ interfaz TWI, 4 canales ADC de 10 bits.
+ 3 puertos de 32 bits cada uno para entradas y salidas, canales periféricos
+ DMA para maximizar el paso de los datos entre las interfaces.
+ 
+\end_layout
+
+\begin_layout Standard
+El AT91SAM9260 cuenta con un sistema de control completo que incluye reset,
+ interruptor de apagado, reloj, AIC, DBGU, temporizador de intervalo periódico,
+ temporizador watchdog y de tiempo real.
+ Soporta Linux y Windows CE.
+ Ha sido desarrollado para aplicaciones de procesamiento de imágenes.
+\end_layout
+
+\begin_layout Standard
+Tales como terminales de punto de venta, cámaras basadas en Ethernet y
+ decodificadores de barras.
+\end_layout
+
+\begin_layout Subsubsection
+Memoria NAND MT29F8G08MADWC:DTR 
+\end_layout
+
+\begin_layout Standard
+La MT29F8G08MADWC es una memoria NAND flash de 8GB.
+ Esta memoria NAND incluye las características estándar de todas las demás
+ NAND Flash de micron así como una nueva característica diseñada para mejorar
+ el rendimiento del sistema 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "mt29"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+La MT29F8G08MADWC usa un bus multiplexor de 8 bits para transferir datos,
+ direcciones e instrucciones.
+ Los 5 pins de comandos (CLE, ALE, CE, 24 RE, WE) implementan el protocolo
+ de interfaz del bus de comandos.
+ Dos pines adicionales controlan la protección de escritura del hardware
+ (WP) y el estado del monitor (R/B).
+\end_layout
+
+\begin_layout Subsubsection*
+Memoria Ram MT48LCG64M4A2P-75.
+ 
+\end_layout
+
+\begin_layout Standard
+La SDRAM de 256Mb es un CMOS de alta velocidad.
+ Esta configurada internamente con cuatro bancos DRAM con una interfaz síncrona
+ integrada.
+ Cada uno de los bancos esta organizado con 8,192 filas y 512 columnas.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "mt48"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los accesos de la SDRAM son orientados a flujos, Los accesos empiezan con
+ el registro del comando ACTIVE, después le sigue el comando READ o WRITE.
+ Los bits de direcciones que coinciden con el comando ACTIVE son usados
+ para seleccionar el banco y la fila a la que se quiere accesar (BA0, BA1
+ selecciona el banco; A0-A12 selecciona la fila) Los bits de direcciones
+ que coinciden con los comandos READ y WRITE, son usados para seleccionar
+ donde empezará la columna de acceso.
+ 
+\end_layout
+
+\begin_layout Standard
+La SDRAM de 256Mb usa arquitectura pipeline para logar la rápida velocidad
+ de operación.
+ Al precargar un banco mientras se accesa a uno de los otros 3 bancos esconderá
+ los ciclos precargados y provee alta velocidad en operaciones aleatorias
+ de acceso.
+ La SDRAM esta diseñada para operar en sistemas de memorias de 3.3V.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Memoria Flash AT45DB16ID-SU 
+\end_layout
+
+\begin_layout Standard
+La AT45DB161D-SU es una memoria Flash de 2.5volts a 2.7 volts ideal para aplicacio
+nes de almacenamiento de datos, voz digital e imágenes.
+ Soporta a la interfaz serial RapidS para aplicaciones que requieren operaciones
+ de alta velocidad.
+ 
+\end_layout
+
+\begin_layout Standard
+La interfaz serial RapidS es compatible para frecuencias de hasta los 66MHz.
+ Esta memoria esta organizada en 4,096 páginas de 512 bytes o de 528 bytes
+ a cada una.
+ Así mismo la memoria principal contiene dos buffers SRAM de 512 o 528
+ bytes cada uno.
+ Los búffers permiten la recepción de datos mientras la página en la memoria
+ principal esta siendo reprogramada.
+ 
+\end_layout
+
+\begin_layout Standard
+La memoria Flash utiliza la interaz serial RapidS para acceder secuencialmente
+ a los datos, lo cual reduce la cantidad de pines activos que se deben tener
+ para este proceso, incrementa la confiabilidad del sistema, minimiza el
+ ruido, y disminuye el tamaño de los paquetes.
+ 
+\end_layout
+
+\begin_layout Standard
+Este dispositivo es usado de manera comercial en aplicaciones industriales
+ donde la alta densidad, un número menor de pines activos, el bajo voltaje
+ y la baja potencia son esenciales.
+ Para permitir la capacidad de reprogramación del sistema, la AT45DB161D
+ o no requiere de altos voltajes para programarla.
+ 
+\end_layout
+
+\begin_layout Standard
+El dispositivo opera con una sola fuente de alimentación, 2.5V a 3.6V o 2.7V
+ a 3.6V, para las operaciones de programación y de lectura.
+ 
+\end_layout
+
+\begin_layout Subsection*
+FT232RL 
+\end_layout
+
+\begin_layout Standard
+El FT232RL es el más reciente dispositivo de la familia FTDI USB UART.
+ El FT232RL es una interfaz de usb a UART serial con reloj opcional generador
+ de salidas y el nuevo FTDIChip-ID.
+ Así mismo, contiene los bits bangs de interfaz en modos asincrínos y
+ síncronos están disponibles.
+ El diseño USB a serial utilizando el FT232R se ha simplicado gracias a
+ integrar la EEPROM externa, el reloj del circuito y los resistores USB
+ dentro del dispositivo.
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ft232"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El FT232RL tiene dos nuevas funciones.
+ El reloj interno se puede usar fuera del dispositivo para controlar un
+ microcontrolador.
+ Un número único es impreso en el dispositivo durante la realización del
+ mismo el cual se lee por el USB, formando un chip de seguridad que es utilizado
+ para proteger el software de ser copiado.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Diagrama a bloques SAM9-MX
+\end_layout
+
+\begin_layout Standard
+Una vez que ya se tiene bien claros cuales son los componentes a utilizar
+ y las funciones que se quiere abarcar con nuestra tarjeta, se procede a
+ realizar un diagrama de bloques.
+ 
+\end_layout
+
+\begin_layout Standard
+El diagrama de bloques es la representación gráfica del funcionamiento
+ interno de un sistema, que se hace mediante bloques o rectángulos y sus
+ relaciones con los demás bloques, en este caso las relaciones con el microcontr
+olador, y que además, definen la organización de todo el proceso interno,
+ sus entradas y sus salidas.
+ 
+\end_layout
+
+\begin_layout Standard
+Como se puede ver en el diagrama de bloques en figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bloques"
+
+\end_inset
+
+ se pueden ver como estan relacionados los distintos componentes, los más
+ relevantes, con el microcontrolador, se especifica cuantos son los pines
+ que están conectados con el micro para así darnos a una idea de la cantidad
+ de pines que debe tener disponibles el AT91SAM9260 para estas funciones,
+ y los que usaremos para aplicaciones posteriores.
+ 
+\end_layout
+
+\begin_layout Standard
+Para hacer este diagrama de bloques no se necesitó de ningún software especial
+ pues solo se quiere dar una breve demostración gráfica de la organización
+ de los dispositivos de la tarjeta.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename diagrama_bloques.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bloques"
+
+\end_inset
+
+Diagrama de bloques de SAM9-MX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Diagrama Esquemático
+\end_layout
+
+\begin_layout Standard
+La elaboración de un diagrama esquemático no es tarea fácil, sobre todo
+ tratándose de un dispositivo tan grande y complejo como lo es la SAM9-MX,
+ es por eso que en esta sección se explicarán los pasos que seguimos para
+ tener un diagrama esquemático listo.
+\end_layout
+
+\begin_layout Standard
+El diagrama esquemático es una representación pictórica de un circuito
+ eléctrico.
+ Muestra los diferentes componentes del circuito de manera simple y con
+ pictogramas uniformes de acuerdo a normas y las conexiones de poder y de
+ señales entre los dispositivos.
+ El arreglo de los componentes e interconexiones en el esquema generalmente
+ no corresponde a las ubicaciones físicas en el dispositivo terminado.
+ 
+\end_layout
+
+\begin_layout Standard
+Si bien una tarea más díficil es la elaboración del PCB, se tiene que tener
+ en mente, las medidas de los diferentes componentes que integran esta tarjeta,
+ para así poder asignar footprints adecuados y hacer el camino del PCB más
+ sencillo.
+\end_layout
+
+\begin_layout Standard
+Para hacer el diagrama esquemático se probaron varios software especializados
+ en ese campo, automatizar el diseño de circuitos electrónicos.
+ Los cuales fueron:
+\end_layout
+
+\begin_layout Enumerate
+gEDA
+\end_layout
+
+\begin_layout Enumerate
+Orcad
+\end_layout
+
+\begin_layout Enumerate
+Eagle
+\end_layout
+
+\begin_layout Standard
+Cuando se utilizó gEDA, se pudieron realizar varios diagramas pruebas, pero
+ no era tan fácil de usar para hacer los footprint de los componentes, así
+ que se decidió seguir con la investigación de otros programas de diseño.
+\end_layout
+
+\begin_layout Standard
+Orcad es un programa más usado para diseñar estos tipos de diagramas, por
+ lo mismo se empezó a usar y a hacer diferentes diagramas prueba junto con
+ sus respectivos PCB's, pero a la hora de investigar los tamaños y medidas
+ exactas de los diferentes componentes, se pudo observar que ya existían
+ bibliotecas con los footprints de cada uno para un programa llamado Eagle.
+\end_layout
+
+\begin_layout Standard
+Eagle, es el programa que se esta utilizando en este momento, se utilizó
+ para el diagrama esquemático y posteriormente con el se hará el PCB, el
+ hecho de que encontraramos a los componentes en las diversas bibliotecas
+ distribuidas en internet, fue de gran ayuda, para la elaboración del diagrama.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Microcontrolador
+\end_layout
+
+\begin_layout Standard
+Ya que se tiene el programa que se va a usar y se verifican que las partes
+ del diagrama se encuentren; en nuestro caso se puso primero el microcontrolador
+ pues es el que más pines tiene y el que esta conectado a casi todos los
+ componentes de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX.
+\end_layout
+
+\begin_layout Subsection*
+Memorias
+\end_layout
+
+\begin_layout Standard
+Después del micro se pusieron las memorias, pues son de gran importancia
+ para nuestra tarjeta, contamos con dos memorias RAM las MT48LC64MA2, cada
+ una cuenta con 12 pines de direcciones y 15 pines de datos que estan conectados
+ al micro.
+ Los pines de direccion se conectan al los mismos puertos en el micro, sin
+ embargo los datos esta conectados a puertos distintos, esto es por que
+ cuando queremos hacer un acceso a memoria, los pines de direccion nos regresan
+ la dirección de la misma, pero una RAM nos regresa la parte alta de los
+ datos, mientras que la otra nos regresa la parte baja.
+ 
+\end_layout
+
+\begin_layout Standard
+Así mismo, también se cuenta con una memoria NAND, la cual se puede deshabilitar
+ por medio de una jumper, y con eso se habilitan las memorias RAM, esto
+ es de gran ayuda a la hora de programa la tarjeta pues no se puede programa
+ con la NAND habilitada.
+ La memoria NAND compart la seccion de datos del microcontrolado con una
+ RAM.
+\end_layout
+
+\begin_layout Standard
+En cuento memorias faltaría una de citar, la memoria FLASH, que cumple la
+ función de cualquier otra memoria FLASH, hacer el acceso a memoria más
+ rápido.
+ Claro esta, esta es de menor capacidad que las demás pero ayuda mucho a
+ agilizar los accesos, por lo tanto cumple su función y el objetivo de ser
+ puesta en la tarjeta.
+\end_layout
+
+\begin_layout Standard
+Otro dispositivo importante es la memoria SD Card, escogimos que fuera una
+ micro SD por que es un componentes novedoso, de fácil uso y sirve para
+ almacenar datos que pueden posteriormente ser guardados en la tarjeta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Alimentación
+\end_layout
+
+\begin_layout Standard
+La alimentación de la tarjeta, es donde se obtiene el voltaje que se necesita
+ para alimentar a todos los componentes de la tarjeta los cuales en su mayoría
+ operan con 3.3V.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Puertos
+\end_layout
+
+\begin_layout Standard
+Puertos usb: cuenta con dos, uno de ellos es un puerto USB Device el cual
+ se puede comunicar con la computadora por medio un cable USB, y el otro
+ puerto USB es Host, lo que nos permite directamente conectar nuestra memoria
+ USB a la tarjeta, estas son unas funciones innovadoras y fáciles de usar
+ para el empleo de nuestra tarjeta.
+ 
+\end_layout
+
+\begin_layout Standard
+Otro componente importante es el JTAG, el cual nos sirve para programar
+ y debuggear nuestra tarjeta, también nos ayuda a saber los estados de
+ los registros de la memoria, cuando se está en tiempo de ejecución.
+\end_layout
+
+\begin_layout Standard
+Los puertos externos, previniendo que en un futuro se quieran conectar más
+ componentes de los que tiene esta tarjeta, se pueden hacer en este espacio,
+ que va directamente relacionado con los puertos B y C del micro.
+ Ya que este es uno de los principales objetivos de nuestro trabajo terminal,
+ la propiedad de expansión, para que futuras generaciones puedan hacer inovacion
+es con ellas.
+ 
+\end_layout
+
+\begin_layout Subsection*
+FTDI
+\end_layout
+
+\begin_layout Standard
+Antes de este diagrama, el esquemático de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX, se efectuó el diagrama del dispositivo FTDI, ya que es más simple
+ que el de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX; sirvió para probar los diferentes programas para realizar diagramas,
+ el FTDI nos permitirá tener una comunicación con la tarjeta desde nuestra
+ computadora por medio de un USB, en lugar de con otros puertos que muchas
+ de nuestras pórtatiles ya no cuentan.
+\end_layout
+
+\begin_layout Standard
+El diagrama esquemático de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{SAM}
+\end_layout
+
+\end_inset
+
+9-MX dividido en 4 partes, junto con el diagrama del FTDI, se encuentran
+ en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:esquematico"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

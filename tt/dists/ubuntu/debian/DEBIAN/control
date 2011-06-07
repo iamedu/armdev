@@ -1,0 +1,9 @@
+Package: armux
+Version: 0.1
+Section: admin
+Priority: optional
+Architecture: i386
+Depends: libreadline5 
+Installed-Size: 76
+Maintainer: Armux Team <armdev-developers@googlegroups.com>
+Description: ARMDev is a package of utilities for developing ARM programs, it is designed to aid hardware projects, so porting to a new board is very easy. Objective armux has the objective of simulating arm based processors starting with the at91sam9260, but designed to be portable nonetheless, it is designed to be extensible, so you'll be able to write you own classes to plug in you microcontroller.Is is designed for Linux and Python2.6 so be sure you have these requirements. 

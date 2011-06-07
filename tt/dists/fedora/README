@@ -1,0 +1,5 @@
+1.- Copiar carpeta rpmbuild a /home/[nombre_usuario]/
+2.- Bajar el archivo "armux-0.1.tar.bz2" de http://code.google.com/p/armdev/ y ponerlo en la carpeta /home/[nombre_usuario]/rpmbuild/SOURCE/
+3.- Entrar a la carpeta /home/[nombre_usuario]/rpmbuild/SPECS/
+4.- Ejecutar rpmbuild -ba [archivo].spec
+5.- El RPM generado lo encontraras en la carpeta /home/[nombre_usuario]/rpmbuild/RPMS/

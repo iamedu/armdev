@@ -1,0 +1,419 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Pruebas}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:pruebas"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Simulador ARMUX
+\end_layout
+
+\begin_layout Standard
+La fase de pruebas con ARMUX empezó con ejemplos muy fáciles como declarar
+ variables, asignar valores, operaciones matemáticas, etc.
+ Para demostrar la efectividad de nuestro simulador, se probo un código
+ más complejo, este código cuenta con una lista, la cual llenamos con números
+ del 0 al 9 para finalmente desplegar todos los elementos de la lista.
+ Debido a que no contamos con las librerías de C, para la asignación de
+ memoria a nuestra lista se tuvo que implementar una función que hiciera
+ lo mismo que la función llamada malloc() de C.
+ También se desarrollaron las funciones print_num() y put_char() para implementa
+r la función printf(), que simulara el comportamiento del printf() proporcionado
+ por C.
+ Por ultimo se trabajo con un variable estática, ya que este tipo de variables
+ fueron las que causaron mas problemas al inicio.
+ El código de este programa se puede observar en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prueba.c"
+
+\end_inset
+
+, a continuación se puede observar la salida del simulador ARMUX cuando
+ se ejecuta este código:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "pruebasalida"
+lstparams "caption={Salida del Simulador},label={pruebasalida}"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede observar el simulador ARMUX ejecuta este código sin problemas,
+ para llegar a esto tuvimos que pasar por un fase de depuración detalla,
+ con la cual esperamos haber encontrado y arreglado el mayor numero de bugs.
+ Esta fase de depuración un no esta finalizada, estamos cocientes de que
+ se debe seguir probando al simulador, para que en un futuro ARMUX sea una
+ herramienta confiable.
+ 
+\end_layout
+
+\begin_layout Section
+elf_read
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:elf_read"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Archivo ELF, segmento de secciones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename secciones.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Programa el_fread sin parametro:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "binario"
+lstparams "caption={Binario Generado sin Parametro},label={binario}"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Programa el_fread con parametro -nonzero:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "zero"
+lstparams "caption={Binario generado con Parametro},label={zero}"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+PICASO/FTDI
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mu$
+\end_layout
+
+\end_inset
+
+VGA PICASO-MD1 es un motor de gráficos que por medio de comandos integrados,
+ nos permite desde poner un color de fondo hasta producir una gran variedad
+ de formas y tamaños que pueden incluir caracteres de mapas de bits definibles
+ por el usuario.
+\end_layout
+
+\begin_layout Standard
+Con este controlador se manejara la parte del vídeo para el microprocesador,
+ la primera fase consiste en la integración del controlador gráfico realizando
+ pruebas para familiarizarnos con los comandos internos, para posteriormente
+ poder integrarlo en el simulador.
+ Todas las pruebas se realizaran con la ayuda del lenguaje de programación
+ PYTHON debido a la facilidad con la que podemos mandar información serial.
+ Una limitación importante fue que las computadoras actuales no cuentan
+ con puerto serial y toda la comunicación con el controlador gráfico es
+ por medio de este puerto, para solucionar el problema se necesita simular
+ un puerto serial a través del USB, para esto usamos un FTDI(FT232RL).
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:serie.jpg"
+
+\end_inset
+
+ se puede observar la forma en la que conectamos las placas para la realización
+ de las pruebas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename serie.jpg
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Conexión de las placas para la comunicación PC-PICASO-MONITOR 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:serie.jpg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para la primera prueba figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:fcirculo.jpg"
+
+\end_inset
+
+ se planteo poner un color de fondo y colocar una figura básica como el
+ círculo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fcirculo.jpg
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Fondo blanco y círculo rojo
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:fcirculo.jpg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La segunda prueba consiste en mandar una imagen (.bmp) y modificar la resolución
+ de la pantalla ya que por default se tiene QVGA.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:prueba.jpg"
+
+\end_inset
+
+ se muestran todas las fases por las que se paso para que la segunda prueba
+ quedara finalizada.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename prueba.jpg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Conjunto de intentos para la segunda prueba
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:prueba.jpg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "img.py"
+
+\end_inset
+
+ podrá encontrar el código en PYTHON con el cual logramos cargar la imagen.
+ En este código se obtiene toda la información de la imagen .bmp que se pasa
+ como parámetro al programa, esta información nos sirve para saber las dimension
+es de la imagen, así como su tipo.
+ La imagen debe de tener máximo 8 bits o un byte por píxel.
+ Y también se puede observar como se configura la resolución de la pantalla.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Todas las pruebas de simulador, elf_read, picaso y FTDI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

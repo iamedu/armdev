@@ -1,0 +1,8 @@
+2009-09-13
+
+It is possible now to link agains lua and to read processor registers in realtime, when shown armux>> prompt type:
+
+proc:readReg(0)
+
+And you'll get the value of register 0
+

@@ -1,0 +1,17 @@
+2009-10-16 Eduardo Diaz <iamedu@gmail.com>
+
+	* include/malloc.h: Uploading Doug Lea's Malloc
+	* malloc.c: Uploading Doug Lea's Malloc
+
+
+2009-10-15 Eduardo Diaz <iamedu@gmail.com>
+
+	* include/assert.h: Creating file just for the assert macro
+
+	* include/stdio.h: Creating file according to POSIX standard, FILE
+	structure has yet to be completed.
+
+	* include/stdlib.h: Creating file according to POSIX standard.
+
+	* include/string.h: Creating file according to POSIX standard.
+

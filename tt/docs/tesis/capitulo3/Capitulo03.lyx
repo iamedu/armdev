@@ -1,0 +1,518 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Arquitectura ARM}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:arquitectura_arm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior se presentaron algunas de las herramientas con las
+ que se cuenta para trabajar la arquitectura 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, y se plantea el desarrollo de una aplicación que permita simular el código
+ de esta arquitectura.
+ Es necesario pues, presentar los detalles de implantación de ésta tecnología
+ para entender el diseño del simulador.
+ En las siguientes secciones se discutirán el modelo de programación de
+ un microprocesador o microcontrolador de la familia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, y el modelo de memoria.
+\end_layout
+
+\begin_layout Section
+Modelo de programación
+\end_layout
+
+\begin_layout Standard
+La arquitectura 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ es una arquitectura 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{RISC}
+\end_layout
+
+\end_inset
+
+, y puede ser Harvard o Von Neumann, dependiendo de la versión de la especificac
+ión.
+\end_layout
+
+\begin_layout Standard
+Todos los microprocesadores de ésta familia tienen en común 7 modos de ejecución
+, que se enumeran a continuación 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "armmanual"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Usuario
+\emph default
+ Modo de ejecución normal
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FIQ}
+\end_layout
+
+\end_inset
+
+
+\emph default
+ Suporta acceso a memoria de álta velocidad.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{IRQ}
+\end_layout
+
+\end_inset
+
+
+\emph default
+ Manejo de interrupciónes de propósito general.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Supervisor
+\emph default
+ Modo protegido del sistema operativo, en éste modo es en el que se arranca.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Abort 
+\emph default
+Implementa la memoria virtual
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Undefined 
+\emph default
+Soporta emulación por software de dispositivos de hardware.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+System
+\emph default
+ Soporta operaciónes privilegiado, generalmnte de sistema operativo.
+\end_layout
+
+\begin_layout Standard
+Sin importar el modo de operación, en todo momento podemos hacer referencia
+ a 16 registros, 14 de propósito general, un contador de programa y un registro
+ de estado, sin embargo la arquitectura define 37 registros de 32 bits,
+ debido a que en ocasiones se accede a diferentes registros dependiendo
+ del modo, en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:registros"
+
+\end_inset
+
+ se muestra la distribución de estos registros.
+\end_layout
+
+\begin_layout Standard
+Como se puede observar dependiendo del modo se accede a algunos registros
+ diferentes por ejemplo la instrucción: 
+\emph on
+mov r13, #5 
+\emph default
+se comporta de manera diferente si el procesador está en modo 
+\emph on
+Supervisor
+\emph default
+ que en modo 
+\emph on
+System, 
+\emph default
+en el caso del modo 
+\emph on
+Supervisor
+\emph default
+ se mueve un 5 al registro físico r13_svc mientras que en modo 
+\emph on
+System
+\emph default
+ se mueve al registro física r13.
+\end_layout
+
+\begin_layout Standard
+Estos registros se denominan registros en la sombra y tienen una razón de
+ ser, los registros 13 y 14 generalmente se denominan, link register y stack
+ pointer respectivamente.
+ El link register tiene la dirección de regreso después de cierta instrucción
+ de salto, y el registro stack pointer apunta al tope de la pila.
+ Al convertir estos registros en registros en la sombra, podemos mantener
+ una pila diferente para cada modo, y no hay necesidad de guardar datos
+ en la pila entre los cambios de modo, esto nos da mayor performance.
+\end_layout
+
+\begin_layout Standard
+En el caso del modo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FIQ}
+\end_layout
+
+\end_inset
+
+ tenemos más registros en la sombra puesto que deseamos dar el soporte mas
+ rápido a estas interrupciónes rápidas, minizando el número de datos a meter
+ en la pila.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename registros.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:registros"
+
+\end_inset
+
+Registros del procesador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Modelo de memoria
+\end_layout
+
+\begin_layout Standard
+Esta familia de procesadores soporta dos revisiones, procesadores con MMU
+ y procesadores sin MMU, en el caso de los que soportan MMU podemos direccionar
+ hasta 4 GB de memoria si tenemos el suficiente espacio en disco y un sistema
+ operativo que soporte el 
+\emph on
+swapping
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En otro caso podemos direccionar 2 GB de memoria (aunque sólo una pequeña
+ parte de esta memoria estaría físicamente mapeada a algún dispositivo),
+ y los otros 2 GB estan mapeados a la configuración de los dispositivos
+ externos del microprocesador.
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:memoria"
+
+\end_inset
+
+ se muestran las regiones de memoria mapeadas a ciertos dispositivos externos
+ del microprocesador.
+ En este ejemplo escribir en la dirección 
+\emph on
+0x000FFFF
+\emph default
+ equivale algún comando al dispositivo UART.
+\end_layout
+
+\begin_layout Standard
+La distribución de la memoria depende del fabricante, es aquí donde entra
+ en juego el desarrollo de un simulador, como se detalla en el capítulo
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:simulador_arm"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../capitulo4/memoria.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Modelo de memoria en ARM
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:memoria"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Formato de las instrucciónes
+\end_layout
+
+\begin_layout Standard
+Los microcontroladores y microprocesadores 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, dependiendo del estándar que sigan, pueden soportar tres conjuntos de
+ instrucciones:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ARM.
+
+\emph default
+ Conjunto de instrucciones RISC de 32 bits, puede direccionar hasta 4 GB
+ de memoria.
+ Cualquier microprocesador o microcontrolador 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ soporta este modo.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Thumb
+\emph default
+.
+ Conjunto de instrucciones RISC de 16 bits (aunque las revisiones actuales
+ soportan tamaños varables para algunas instrucciónes, pudiendo ser de 16
+ o 32 bis), trabaja bajo la premisa de generar código más compacto, sin
+ embargo tiene la limitación de que solo puede direccionar hasta 64K de
+ memoria.
+ Funciona bien para microcontroladores con menos capacidad.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Jazelle
+\emph default
+.
+ Este conjunto de instrucciones está diseñado para soportar el bytecode
+ de Java a nivel de hardware, sin embargo este conjunto de instrucciones
+ no se ha consolidado entre otras razones porque es requerido soporte de
+ software para hacerlo.
+ 
+\end_layout
+
+\begin_layout Standard
+En este trabajo utilizamos las instrucciónes ARM, posteriormente es posible
+ extender el trabajo a instrucciónes de Thumb y Jazelle.
+\end_layout
+
+\end_body
+\end_document

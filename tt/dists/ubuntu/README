@@ -1,0 +1,11 @@
+HOWTO GENERATE A .DEB OF ARMUX
+
+1. Download the most recent armux package from http://code.google.com/p/armdev/
+2. Decompress the .tar.bz2(tar jvxf <yourfilename>.tar.bz2) file and copy on the /armdev/tt/dist/ubuntu folder
+3. Enter to the recent copied folder and run ./configure, after that run the Makefile
+4. Copy the generated binary file "armux" on the  /armdev/tt/dist/ubuntu/debian/DEBIAN folder
+5. Run the script "genDEB" to generate the .deb package.
+6. And now your .deb package is ready!!!.
+
+
+Note: If you want to edit the version of the armux and other caracteristics, you can do this editing the control file in /armdev/tt/dist/ubuntu/debian/DEBIAN. 

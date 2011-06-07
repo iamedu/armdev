@@ -1,0 +1,145 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Motivación}{Motivación}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Solución propuesta
+\end_layout
+
+\begin_layout Standard
+Una gran inovación de ARMUX es que se cuenta con la posibilidad de simular
+ o diversos dispositivos tales como el FTDI, JTAG, memoria NAND, etc.
+\end_layout
+
+\begin_layout Standard
+La idea de desarrollar un nuevo simulador siendo que ya existen varios en
+ el mercado, es debido a que estos simuladores en su mayoria solo ofrencen
+ entradas y salidas estandar a diferencia de que nuestra idea es crear algo
+ que sea compatible con una gran cantidad de dispositivos de entrada/salida
+ lo que daría la opcion a que futuras generaciones usen o desarrollen nuevas
+ implementaciones de nuestro trabajo.
+ 
+\end_layout
+
+\begin_layout Standard
+Todo esto se piensa llevar acabo diseñando y desarrollando nuestro dispositivo
+ desde cero, es decir, primeramente dearrollando nuestra propia tarjeta
+ empleando la especificación ARM, teniendo la tarjeta, implementar sobre
+ la misma un microkernel programado por nosotros con las características
+ específicas que nuestro sistema requiere y de esta manera obtener un mejor
+ rendimiento.
+\end_layout
+
+\begin_layout Standard
+Para poder llevar a cabo las pruebas sobre la tarjeta, se desarrollara un
+ simulador de ARM, con el fin de facilitar el uso y programación de la tarjeta,
+ la función principal del simulador es tomar nuestro codigo escrito en C
+ y convertirlo a lenguaje de bajo nivel siguiento las especificaciones ARM
+ para que pueda ser entendido y ejecutado por la tarjeta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Describir brevemente nuestra propuesta que consiste en:
+\end_layout
+
+\begin_layout Plain Layout
+Tarjeta de Desarrollo + Simulador + Microkernel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

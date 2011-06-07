@@ -1,0 +1,23 @@
+SECTIONS
+{
+	. = 0X8000;
+	.init : { *(.init) }
+	. = 0X8020;
+	.text : { *(.text) }
+	. = 0Xfc94;
+	.fini : { *(.fini) }
+	. = 0Xfcb0;
+	.rodata : { *(.rodata) }
+	. = 0Xff24;
+	.eh_frame : { *(.eh_frame) }
+	. = 0X18844;
+	.ctors : { *(.ctors) }
+	. = 0X1884c;
+	.dtors : { *(.ctors) }
+	. = 0X18854;
+	.jcr : { *(.jcr) }
+	. = 0X18858;
+	.data : { *(.data) }
+	. = 0X19088;
+	.bss : { *(.bss) }
+}

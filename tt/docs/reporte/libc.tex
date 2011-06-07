@@ -1,0 +1,35 @@
+\section{Biblioteca estándar de C}
+
+
+Ya es posible usar el compilador de GNU en linux, sin embargo debido a las pecularidades de nuestra arquitectura no es posible usar la biblioteca estandar lo que nos deja sin funciones b\'asicas como malloc, printf, free, entre otras.
+
+Se han explorado distintas posibilidades, entre las implementaciones libres de newlib estan:
+
+\begin{itemize}
+
+\item \textbf{glibc} Esta es la implementacion estandar que se usa en linux, esta completamente implementada, y est\'a dise\~nada para funcionar con linux.
+
+\item \textbf{Clibc} Implementacion de libc para uCLinux, esta dise\~nado para dispositivos que no disponen de una unidad manejadora de memoria. Tiene la ventaja de que produce binarios bastante peque\~nos, el programa de "Hola mundo" ligado contra glibc produce un binario de 200kb mientras que con Clibc produce binario de 4kb.
+
+\item \textbf{newlib} Newlib es un una biblioteca estandar dise\~nada para ser f\'acilmente portable, es bastante peque\~na produciendo un "Hola mundo" de 40kb, implementa la mayoria de las bibliotecas al sistema y provee un mecanismo sencillo para implementar nuevas arquitecturas.
+
+\end{itemize}
+
+Existe una opci\'on m\'as, que consiste en desarrollar una biblioteca est\'andar que contenga solamente las funciones m\'as b\'asicas necesarias para crear un programa en C.
+
+Para decidi entre estas opciones, se deben de tomar en cuenta los siguientes aspectos:
+
+\begin{itemize}
+
+\item Capacidad de manejar memoria virtual.
+\item Que genere binarios peque\~nos.
+\item F\'acilmente adaptable en caso de que haya cambios del microkernel.
+
+\end{itemize}
+
+Se ha intentado migrar hasta ahora newlib, sin embargo es dif\'icil, debido a que soporta una gran cantidad de plataformas el c\'odigo se ha vuelto complicado, y es dif\'icil adaptarlo a una nueva plataforma, adem\'as de que el tiempo de compilaci\'on hace complicado estar haciendo cambios sobre el c\'odigo.
+
+Por otro lado, hemos empezado a generar funciones que pertenecen a la biblioteca est\'andar de C como parte de las pruebas del simulador, \'estas funciones podr\'ian incluirse en una biblioteca est\'andar a la medida. Como parte de este esfuerzo tambi\'en se ha investigado sobre el est\'andar IEEE std 1003.1, que define entre otras cosas una biblioteca POSIX.
+
+Por el trabajo que hemos realizado, parece ser una opci\'on mas viable implementar las funciones m\'inimas de posix de acuerdo al kernel seleccionado.
+

@@ -1,0 +1,3 @@
+noinst_LIBRARIES = libarminst.a
+libarminst_a_SOURCES = adc.c add.c and.c bic.c bkpt.c bl.c blx.c bx.c cdp.c clz.c cmn.c cmp.c cps.c eor.c ldc.c ldm1.c ldm2.c ldm3.c ldrb.c ldrbt.c ldr.c ldrd.c ldrex.c ldrh.c ldrsb.c ldrsh.c ldrt.c mcr.c mcrr.c mla.c mov.c mrc.c mrrc.c mrs.c msri.c msrr.c mul.c mvn.c orr.c rsb.c rsc.c sbc.c setend.c smla.c smlad.c smlal.c smlald.c smlalxy.c smlaw.c smlsd.c smlsld.c smmla.c smmls.c smmul.c smuad.c smul.c smull.c smulw.c smusd.c stc.c stm1.c stm2.c strb.c strbt.c str.c strd.c strex.c strh.c strt.c sub.c swi.c swpb.c swp.c sxtab16.c sxtab.c sxtah.c sxtb16.c sxtb.c sxth.c teq.c tst.c umaal.c umlal.c umull.c uxtab16.c uxtab.c uxtah.c uxtb16.c uxtb.c uxth.c
+AM_CFLAGS = -I@top_srcdir@/include/

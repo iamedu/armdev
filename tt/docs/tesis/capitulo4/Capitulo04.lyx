@@ -1,0 +1,843 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter{Arquitectura de Software}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:simulador_arm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+En los dos capítulos anteriores se habla sobre la arquitectura 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ con ésta base ahora es posible discutir el diseño de las herramientas de
+ software que se plantea desarrollar.
+\end_layout
+
+\begin_layout Section
+Simulador
+\end_layout
+
+\begin_layout Standard
+El simulador se desarrollará para reducir el tiempo al trabajar con microcontrol
+adores 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+ y simular los dispositivos que se desee, a continuación presentamos un
+ breve análisis de requerimientos para posteriormente pasar a la arquitectura
+ del simulador.
+\end_layout
+
+\begin_layout Subsection
+Análisis de requerimientos
+\end_layout
+
+\begin_layout Standard
+Primeramente debemos de hablar sobre los requerimientos que tiene nuestro
+ sistema, para ello en esta sección se habla sobre los requerimientos funcionale
+s y no funcionales.
+\end_layout
+
+\begin_layout Subsubsection
+Requerimientos funcionales
+\end_layout
+
+\begin_layout Itemize
+Simular conjunto de instrucciones 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Fácil desarrollo de simulador de componentes.
+\end_layout
+
+\begin_layout Itemize
+Fácil integración de componentes con simulador 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Uso sencillo para el usuario final, facilidad de simulación y programación
+ del dispositivo.
+\end_layout
+
+\begin_layout Subsubsection
+Requerimientos no funcionales
+\end_layout
+
+\begin_layout Itemize
+Ejecución sólo en ambientes UNIX.
+\end_layout
+
+\begin_layout Itemize
+Simula conjunto de instrucciones 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+, no Thumb ni Jazelle.
+\end_layout
+
+\begin_layout Itemize
+Programación en C y ensamblador.
+\end_layout
+
+\begin_layout Subsubsection
+Requisitos físicos
+\end_layout
+
+\begin_layout Standard
+Debido a que ARMUX es una plataforma de ejecución de otros programas los
+ requerimientos físicos dependen directamente del programa que se desee
+ ejecutar.
+\end_layout
+
+\begin_layout Standard
+Hay cierto overhead por la simulación de cada instrucción, puesto que no
+ se hace ninguna traducción a la máquina host.
+\end_layout
+
+\begin_layout Standard
+En cuanto al ambiente en que debe de correr el programa, se deben de utilizar
+ sistemas UNIX, que soporten pthreads.
+\end_layout
+
+\begin_layout Standard
+Se ha probado hasta ahora en Linux de 32 y 64 bits, pero debería de ser
+ fácilmente portable a Max OS X, Solaris y BSD.
+\end_layout
+
+\begin_layout Subsection
+Diseño
+\end_layout
+
+\begin_layout Standard
+De acuerdo a los requerimientos funcionales y no funcionales podemos describir
+ los casos de uso con el diagrama de la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:casos-uso"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename uso.dia
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:casos-uso"
+
+\end_inset
+
+Diagrama de casos de uso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para dar al usuario estas capacidades y al mismo tiempo permitir flexibilidad
+ en el simulador se ha diseñado una arquitectura que se muestra en la figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:implementacion_memoria.png"
+
+\end_inset
+
+, se propone implementar un buffer para la memoria de cada dispositivo,
+ el microprocesador ve una lista de nodos, cada nodo describe cual es la
+ dirección de inicio y su tamaño.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename implementacion_memoria.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Implantación del modelo de memoria
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:implementacion_memoria.png"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:figura_arq.png"
+
+\end_inset
+
+ se detalla la arquitectura propuesta para el simulador.
+ Como se puede observar hay una interfaz del simulador con cada uno de los
+ componentes, la interfaz es común para los componentes, en el caso de los
+ microcontroladores se usan los registros, y en el caso de los componentes
+ la memoria compartida del microprocesador.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figura_arq.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Modelo de la arquitectura ARM
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:figura_arq.png"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se han desarrollado bibliotecas que permiten la modelación de dispositivos
+ externos con código sencillo y con ellas se han llevado a cabo pequeños
+ experimentos donde se realizan las simulaciones de pequeños componentes
+ de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ARM}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El siguiente código 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "main.c"
+
+\end_inset
+
+ muestra la implementación sencilla de una UART.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "main.c"
+lstparams "caption={UART},label={main.c},language=C,numbers=left,stepnumber=1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aquí se puden apreciar 2 elementos importantes, en la línea 6 inicia la
+ definición de la estructura UARTInterface, en ella se define la dirección
+ base en que el microcontrolador podrá ver a este dispositivo, y el tamaño
+ de la misma, el otro elemento importante es la función valueWritten, ésta
+ función se mandará a llamar automáticamente cuando el uart note que hay
+ información escrita en su memoria, éste comportamiento es el que detalla
+ el fabricante.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "at91"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El simulador se apoya del lenguaje de programación LUA, este lenguaje es
+ imperativo, estructurado y bastante ligero que fue diseñado como lenguaje
+ de script con una semántica extendible.
+ Nos proporciona funciones típicas de los lenguajes de programación como
+ lo son: if-else, while, for, etc.
+\end_layout
+
+\begin_layout Standard
+Con motivos de depuración, también se incluyen funciones que permiten la
+ lectura y escritura de los registros en tiempo de ejecución, lectura y
+ escritura de la memoria, funciones para avanzar una instrucción o avanzar
+ hasta el siguiente break point (ARM provee una instrucción bkpt que el
+ simulador utiliza).
+\end_layout
+
+\begin_layout Section
+el_fread
+\end_layout
+
+\begin_layout Standard
+Básicamente parar que se pueda ejecutar un archivo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+ primero el sistema operativo copia cada una de las secciones a la memoria,
+ cada sección cuenta con una dirección llamada offset que es donde empieza
+ la sección en el archivo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+ y también cuentan con otra dirección llamada addr, esta informa a que dirección
+ de la memoria se debe de copiar la información de la sección.
+ Este procedimiento lo hace automáticamente el Sistema Operativo(S.O.), como
+ el simulador ARMUX no tiene un S.O.
+ se desarrollo un programa llamado el_fread.
+ Este programa se encarga de generar un binario a partir de un archivo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+, poniendo el código correspondiente en el lugar adecuado del binario.
+\end_layout
+
+\begin_layout Standard
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:secciones.jpg"
+
+\end_inset
+
+ es el segmento de secciones de un archivo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{ELF}
+\end_layout
+
+\end_inset
+
+, en esta figura podemos observar las dos direcciones offset y addr de cada
+ sección.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename secciones.jpg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Secciones de un archivo ELF
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:secciones.jpg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El programa el_fread se puede ejecutar de dos maneras diferentes, la primera
+ es generando un binario exactamente como lo pide el archivo ELF y la segunda
+ es generando un binario mas pequeño quitándole toda la información innecesaria,
+ esta segunda opción se ejecuta agregando el parámetro -nonzero.
+ En el Capitulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ch:pruebas"
+
+\end_inset
+
+ sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:elf_read"
+
+\end_inset
+
+ se muestra las dos maneras en las que trabaja el programa con el archivo
+ ELF de la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:secciones.jpg"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Biblioteca estandar de C
+\end_layout
+
+\begin_layout Standard
+Ya es posible usar el compilador de GNU en linux, sin embargo debido a las
+ peculiaridades de nuestra arquitectura no es posible usar la biblioteca
+ estándar lo que nos deja sin funciones básicas como malloc, printf, free,
+ entre otras.
+\end_layout
+
+\begin_layout Standard
+Se han explorado distintas posibilidades, entre las implementaciones libres
+ de newlib están: 
+\end_layout
+
+\begin_layout Itemize
+glibc Esta es la implementación estándar que se usa en linux, esta completamente
+ implementada, y está diseñada para funcionar con linux.
+\end_layout
+
+\begin_layout Itemize
+Clibc Implementación de libc para uCLinux, esta diseñado para dispositivos
+ que no disponen de una unidad manejadora de memoria.
+ Tiene la ventaja de que produce binarios bastante pequeños, el programa
+ de ”Hola mundo”ligado contra glibc produce un binario de 200kb mientras
+ que con Clibc produce binario de 4kb.
+\end_layout
+
+\begin_layout Itemize
+newlib Newlib es un una biblioteca estándar diseñada para ser fácilmente
+ portable, es bastante pequeña produciendo un ”Hola mundo”de 40kb, implementa
+ la mayoría de las bibliotecas al sistema y provee un mecanismo sencillo
+ para implementar nuevas arquitecturas.
+\end_layout
+
+\begin_layout Standard
+Existe una opción más, que consiste en desarrollar una biblioteca estándar
+ que contenga solamente las funciones más básicas necesarias para crear
+ un programa en C.
+ 
+\end_layout
+
+\begin_layout Standard
+Para decidir entre estas opciones, se deben de tomar en cuenta los siguientes
+ aspectos:
+\end_layout
+
+\begin_layout Itemize
+Capacidad de manejar memoria virtual.
+\end_layout
+
+\begin_layout Itemize
+Que genere binarios pequeños.
+\end_layout
+
+\begin_layout Itemize
+Fácilmente adaptable en caso de que haya cambios del microkernel.
+\end_layout
+
+\begin_layout Standard
+Se ha intentado migrar hasta ahora newlib, sin embargo es difícil, debido
+ a que soporta una gran cantidad de plataformas por lo tanto el código se
+ ha vuelto complicado, y es difícil adaptarlo a una nueva plataforma, además
+ de que el tiempo de compilación hace complicado estar haciendo cambios
+ sobre el código.
+\end_layout
+
+\begin_layout Standard
+Por otro lado, hemos empezado a generar funciones que pertenecen a la biblioteca
+ estándar de C como parte de las pruebas del simulador, éstas funciones
+ podrían incluirse en una biblioteca estándar a la medida.
+ Como parte de este esfuerzo también se ha investigado sobre el estándar
+ IEEE std 1003.1, que define entre otras cosas una biblioteca POSIX.
+\end_layout
+
+\begin_layout Standard
+Por el trabajo que hemos realizado, parece ser una opción mas viable implementar
+ las funciones mínimas de posix de acuerdo al kernel seleccionado.
+ 
+\end_layout
+
+\begin_layout Section
+Microkernel
+\end_layout
+
+\begin_layout Standard
+El microkernel que se desea utilizar es L4.
+ L4 es un microkernel de segunda generación desarrollado en Alemania, es
+ llamado microkernel de segunda generación por que busca mejorar el desempeño
+ de los primeros microkernels que existieron.
+ Trabaja bajo la premisa de que el overhead en un microkernel no se debe
+ principalmente al cambio de contexto en el procesador
+\begin_inset CommandInset citation
+LatexCommand citep
+key "David2007"
+
+\end_inset
+
+, sino a la comunicación entre procesos asíncrona.
+\end_layout
+
+\begin_layout Standard
+L4 trabaja con las siguientes premisas 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Liedtke1996"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Debe de haber una implementación para cada arquitectura, para optimizar
+ al máximo posible.
+\end_layout
+
+\begin_layout Itemize
+Manejo rápido de interrupciónes.
+\end_layout
+
+\begin_layout Itemize
+Un servicio debe de establecerse en el kernel sólo si al moverlo fuera no
+ es posible cumplir la funcionalidad requerida.
+\end_layout
+
+\begin_layout Standard
+Habiendo hecho un análisis L4 propone un microkernel sólo debe de incluir
+ las siguientes tareas:
+\end_layout
+
+\begin_layout Itemize
+Modelo de hilos
+\end_layout
+
+\begin_layout Itemize
+Comunicación entre procesos síncrona 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Uhlig2007,Jaeger2000"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Planificador de procesos (scheduling) 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Stoess2007"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Memoria Virtual 
+\end_layout
+
+\begin_layout Standard
+Con esto se tiene un microkernel mínimo que deja las implementaciónes de
+ controladores, y otros servicios como la paginación a nivel de usuario.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Todo lo del simulador 
+\end_layout
+
+\begin_layout Plain Layout
+pagina 17
+\end_layout
+
+\begin_layout Plain Layout
+elf_read
+\end_layout
+
+\begin_layout Plain Layout
+pagina 11
+\end_layout
+
+\begin_layout Plain Layout
+apendice con codigo
+\end_layout
+
+\begin_layout Plain Layout
+*biblioteca
+\end_layout
+
+\begin_layout Plain Layout
+pagina 26
+\end_layout
+
+\begin_layout Plain Layout
+*microkernel
+\end_layout
+
+\begin_layout Plain Layout
+pagina 27
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

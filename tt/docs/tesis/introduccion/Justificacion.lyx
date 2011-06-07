@@ -1,0 +1,166 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+refstepcounter{dummy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[1]{Motivación}{Motivación}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Justificación
+\end_layout
+
+\begin_layout Standard
+Aunque en México existen compañías netamente mexicanas que laboran con
+ Sistemas Integrados, como la companía de teléfonos celulares Zonda Telecom,
+ no es un mercado muy explotado como en otros países de primer mundo, se
+ manufacturan muchos de estos sistemas, pero seriá una gran adelanto y
+ una gran ventaja para nuestro país, que muchos más ingenieros mexicanos
+ tuvierann acceso a seguir desarrollándolos en el ramo de sus elección,
+ ya sea en instrumentos musicales digitales, aire acondicionado, calculadoras,
+ y que mejor que en aviónica y equipos médicos.
+\end_layout
+
+\begin_layout Standard
+Diseños mexicanos explotando este mercado le generaría a México un fuerte
+ ingreso de capital, por las ventas que estos productos, empleos para realizarlo
+s, y por supuesto prestigio de que en este país se hacen productos de calidad,
+ innovadores y seguros.
+ 
+\end_layout
+
+\begin_layout Standard
+Por eso nuestra tentativa solución a este mercado inexplorado el presente
+ o proyecto de Trabajo Terminal que pretende atacar el problema con los
+ siguientes puntos a favor.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Originalidad de trabajo
+\end_layout
+
+\begin_layout Standard
+Como parte del trabajo que se desarrollará para tener el producto de nuestro
+ sistema que maneje video, obtendrémos algunos resultados importantes, como
+ los que enumeramos a continuación:
+\end_layout
+
+\begin_layout Itemize
+Simulador de ARM, que permite simular la interacción con los dispositivos
+ deseados de una manera sencilla.
+\end_layout
+
+\begin_layout Itemize
+Diseño de una tarjeta que se pueda acoplar a una variedad de aplicaciones.
+\end_layout
+
+\begin_layout Subsubsection
+Vinculación con los usuarios potenciales
+\end_layout
+
+\begin_layout Standard
+Los beneficios serían principalmente para los estudiantes de ingeniería
+ que quieran investigar de este tema, y quieran tener algo como base para
+ hacer sus propios diseños.
+\end_layout
+
+\begin_layout Subsubsection
+Complejidad
+\end_layout
+
+\begin_layout Standard
+Nuestros conocimientos en Sistemas Operativos, Electrónica Analógica,
+ Circuitos Eléctricos, pero más nuestro interés por la investigación,
+ nos ha llevado a buscar la forma de realizar este proyecto con los mejores
+ componentes, novedosos pero necesarios, sin desperdiciar utilidad de los
+ mismos, también nos han ayudado a ver los antiguos modelos de productos
+ parecidos al de nosotros, y pensar en una mejoría tanto en costo, como
+ en rentabilidad, calidad y apariencia.
+ 
+\end_layout
+
+\end_body
+\end_document

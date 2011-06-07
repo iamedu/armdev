@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+	<email>iamedu@gmail.com</email>
+</maintainer>
+<longdescription lang="en">
+armux has the objective of simulating arm based processors starting with the at91sam9260, but designed to be portable
+
+nonetheless, it is designed to be extensible, so you'll be able to write you own classes to plug in you microcontroller
+
+Is is designed for Linux and Python2.6 so be sure you have these requirements. 
+</longdescription>
+</pkgmetadata>
+
